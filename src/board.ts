@@ -1,3 +1,5 @@
+import Celda from './celda.js';
+
 const game: HTMLElement | null = document.getElementById('game');
 const boardSize: number = 5;
 

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var game = document.getElementById('game');
 var boardSize = 5;
 var Board = /** @class */ (function () {
