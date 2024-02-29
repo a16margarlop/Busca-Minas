@@ -1,33 +1,28 @@
-import Celda from './celda.js';
+// board.ts
 
-const game: HTMLElement | null = document.getElementById('game');
-const boardSize: number = 5;
+export class Board {
+    private rows: number;
+    private cols: number;
+    private boardElement: HTMLElement;
 
-class Board {
-    
-    constructor(){
-        
-    }
-    
-    createBoard(){
-        if(game) {
-
-            
-        } else {
-        console.warn('No se encontró el elemento con el id "game".');
-        }
+    constructor(rows: number, cols: number) {
+        this.rows = rows;
+        this.cols = cols;
+        this.boardElement = document.getElementById("game")!;
+        this.createBoard();
     }
 
-    createCells(){
-        for (let i = 0; i < boardSize; i++) {
-            for (let j = 0; j < boardSize; j++) {
-                let cell = new Celda(i, j);
-                cell.createCell();
+    private createBoard(): void {
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < this.cols; j++) {
+                const cell = document.createElement("button");
+                cell.className = "cell";
+                cell.style.width = "20px";
+                cell.style.height = "20px";
+                this.boardElement.appendChild(cell);
             }
-            
+            const lineBreak = document.createElement("br");
+            this.boardElement.appendChild(lineBreak);
         }
     }
-
 }
-
-export default Board;

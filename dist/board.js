@@ -1,26 +1,27 @@
 "use strict";
+// board.ts
 Object.defineProperty(exports, "__esModule", { value: true });
-var celda_js_1 = require("./celda.js");
-var game = document.getElementById('game');
-var boardSize = 5;
+exports.Board = void 0;
 var Board = /** @class */ (function () {
-    function Board() {
+    function Board(rows, cols) {
+        this.rows = rows;
+        this.cols = cols;
+        this.boardElement = document.getElementById("game");
+        this.createBoard();
     }
     Board.prototype.createBoard = function () {
-        if (game) {
-        }
-        else {
-            console.warn('No se encontró el elemento con el id "game".');
-        }
-    };
-    Board.prototype.createCells = function () {
-        for (var i = 0; i < boardSize; i++) {
-            for (var j = 0; j < boardSize; j++) {
-                var cell = new celda_js_1.default(i, j);
-                cell.createCell();
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
+                var cell = document.createElement("button");
+                cell.className = "cell";
+                cell.style.width = "20px";
+                cell.style.height = "20px";
+                this.boardElement.appendChild(cell);
             }
+            var lineBreak = document.createElement("br");
+            this.boardElement.appendChild(lineBreak);
         }
     };
     return Board;
 }());
-exports.default = Board;
+exports.Board = Board;
