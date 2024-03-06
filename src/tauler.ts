@@ -1,18 +1,3 @@
-// b.  Classe Tauler
-
-// Aquesta classe serà la responsable de gestionar l'estructura i l'estat del conjunt de caselles (instàncies de la classe Casella) que formen el joc de buscamines. El Tauler ha de tenir els següents atributs i mètodes:
-
-// Atributs:
-// caselles: Una matriu bidimensional d'objectes de tipus Casella.
-// filas: El nombre de files del tablero.
-// columnes: El nombre de columnes del tablero.
-// Mètodes:
-// Constructor: Ha de rebre el nombre de files i columnes com a paràmetres i inicialitzar el tablero amb caselles, distribuint les mines de manera aleatòria (podeu generar un número de 1 a 10 i si es <3 --> hi ha mina).
-// inicializarCaselles(): Un mètode per inicialitzar les cèl·lules del tablero, incloent la distribució aleatòria de mines.
-
-
-
-
 
 
 class Tauler {
@@ -35,4 +20,30 @@ class Tauler {
             }
         }
     }
+
+    // getMines() {
+    //     let mines = 0;
+    //     for (let i = 0; i < this.files; i++) {
+    //         for (let j = 0; j < this.columnes; j++) {
+    //             if (this.caselles[i][j].esMina) {
+    //                 mines++;
+    //             }
+    //         }
+    //     }
+    //     return mines;
+    // }
+
+    // getMinesArround(fila: number, columna: number) {
+    //     let mines = 0;
+    //     for (let i = fila - 1; i <= fila + 1; i++) {
+    //         for (let j = columna - 1; j <= columna + 1; j++) {
+    //             if (i >= 0 && i < this.files && j >= 0 && j < this.columnes) {
+    //                 if (this.caselles[i][j].esMina) {
+    //                     mines++;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return mines;
+    // }
 }

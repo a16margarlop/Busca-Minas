@@ -34,6 +34,7 @@ var Joc = /** @class */ (function () {
         }
     };
     Joc.prototype.revelarCasella = function (fila, columna) {
+        var _this = this;
         var casella = this.tauler.caselles[fila][columna];
         if (casella.revelada || casella.marcada) {
             return;
@@ -42,6 +43,12 @@ var Joc = /** @class */ (function () {
         var element = document.querySelector(".casella[data-fila=\"".concat(fila, "\"][data-columna=\"").concat(columna, "\"]"));
         if (casella.esMina) {
             element.classList.add('mina');
+            this.revelarTodasCasillas();
+            setTimeout(function () {
+                _this.mostrarMensajeDerrota();
+                _this.tauler.inicialitzarCaselles();
+                _this.dibuixarTauler();
+            }, 1000);
         }
         else {
             element.classList.add('revelada');
@@ -55,6 +62,16 @@ var Joc = /** @class */ (function () {
         casella.marcada = !casella.marcada;
         var element = document.querySelector("[data-fila=\"".concat(fila, "\"][data-columna=\"").concat(columna, "\"]"));
         element.classList.toggle('marcada');
+    };
+    //Cuando toque una mina quiero que se revelen todas las casillas y muestre un mensaje de derrota
+    Joc.prototype.revelarTodasCasillas = function () {
+        var casillas = document.querySelectorAll('.casella');
+        casillas.forEach(function (casilla) {
+            casilla.classList.add('revelada');
+        });
+    };
+    Joc.prototype.mostrarMensajeDerrota = function () {
+        alert('¡Has perdido! Intenta de nuevo.');
     };
     return Joc;
 }());

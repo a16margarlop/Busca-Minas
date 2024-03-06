@@ -38,6 +38,12 @@ class Joc {
         let element = document.querySelector(`.casella[data-fila="${fila}"][data-columna="${columna}"]`);
         if (casella.esMina) {
             element.classList.add('mina');
+            this.revelarTodasCasillas();
+            setTimeout(() => {
+                this.mostrarMensajeDerrota();
+                this.tauler.inicialitzarCaselles();
+                this.dibuixarTauler();
+            }, 1000);
         } else {
             element.classList.add('revelada');
         }
@@ -52,6 +58,18 @@ class Joc {
         let element = document.querySelector(`[data-fila="${fila}"][data-columna="${columna}"]`);
 
         element.classList.toggle('marcada');
-        
+
+    }
+
+    //Cuando toque una mina quiero que se revelen todas las casillas y muestre un mensaje de derrota
+    revelarTodasCasillas() {
+        let casillas = document.querySelectorAll('.casella');
+        casillas.forEach((casilla) => {
+            casilla.classList.add('revelada');
+        });
+    }
+
+    mostrarMensajeDerrota() {
+        alert('¡Has perdido! Intenta de nuevo.');
     }
 }
